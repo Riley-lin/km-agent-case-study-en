@@ -28,15 +28,15 @@ To answer a single question, support staff previously had to piece together info
 
 **How a question gets answered:**
 
-<img src="assets/flow-answer.png" alt="Answer flow: a user question passes through intent detection, model number validation, completeness check, knowledge base retrieval, and a secondary verification step before an answer is generated" width="600">
+<img src="assets/flow-answer.png" alt="Answer flow: a user question passes through intent detection, model number validation, completeness check, knowledge base retrieval, and a secondary verification step before an answer is generated" width="720">
 
 **How knowledge gets in:**
 
-<img src="assets/flow-ingestion.png" alt="Ingestion flow: dynamic web pages, PDFs, PPT/Excel files, and internal emails each pass through a dedicated extraction tool and are unified into a single document format" width="600">
+<img src="assets/flow-ingestion.png" alt="Ingestion flow: dynamic web pages, PDFs, PPT/Excel files, and internal emails each pass through a dedicated extraction tool and are unified into a single document format" width="720">
 
 **How correctness is maintained:**
 
-<img src="assets/flow-maintenance.png" alt="Change management flow: the unified document format enters the knowledge base via command-based editing and scheduled sync, paired with change monitoring and dual-track feedback" width="600">
+<img src="assets/flow-maintenance.png" alt="Change management flow: the unified document format enters the knowledge base via command-based editing and scheduled sync, paired with change monitoring and dual-track feedback" width="720">
 
 ---
 
@@ -48,7 +48,7 @@ This isn't an arbitrary priority. A wrong model reference isn't "an incomplete a
 
 Because this rule sits at the top of the priority stack, it overrides every other judgment in play at that moment, including whether a knowledge-base match was found at all. The diagram below illustrates the logic; it is not the literal system prompt:
 
-<img src="assets/flow-priority-rule.png" alt="Model-number priority check logic: on receiving a question, first check whether it contains a model number string; if the model number isn't in the master list, ask the user to clarify and stop, without proceeding to retrieval" width="600">
+<img src="assets/flow-priority-rule.png" alt="Model-number priority check logic: on receiving a question, first check whether it contains a model number string; if the model number isn't in the master list, ask the user to clarify and stop, without proceeding to retrieval" width="720">
 
 This "overrides everything" priority explains nearly every design choice that otherwise looks independent:
 
@@ -76,11 +76,11 @@ Consolidated FAQ, product manuals, operating instructions, and image-based knowl
 
 **Before:**
 
-<img src="assets/flow-before.png" alt="Before: on receiving a customer question, staff checked the website FAQ, then the PDF manual, then the download center, then asked a senior colleague or PM, before replying to the customer" width="280">
+<img src="assets/flow-before.png" alt="Before: on receiving a customer question, staff checked the website FAQ, then the PDF manual, then the download center, then asked a senior colleague or PM, before replying to the customer" width="460">
 
 **After:**
 
-<img src="assets/flow-after.png" alt="After: on receiving a customer question, staff ask the knowledge assistant directly, get a draft answer with sources, confirm it, and reply to the customer" width="280">
+<img src="assets/flow-after.png" alt="After: on receiving a customer question, staff ask the knowledge assistant directly, get a draft answer with sources, confirm it, and reply to the customer" width="460">
 
 Previously, staff had to repeatedly search and cross-reference the website, PDF manuals, spec sheets, and internal documents — a process that was both time-consuming and prone to cross-document mix-ups that pulled in the wrong model's data. After launch, staff ask a natural-language question directly, get a draft answer with its source, confirm it, and reply — skipping the manual search process entirely.
 

@@ -4,7 +4,7 @@ A knowledge-base agent's "correctness" can't be verified with unit-test assertio
 
 ## Test process
 
-<img src="assets/flow-test-loop.png" alt="Test process: consistency check, batch-generate test questions, review accuracy, locate the specific failing node, then loop back to the consistency check" width="700">
+<img src="assets/flow-test-loop.png" alt="Test process: consistency check, batch-generate test questions, review accuracy, locate the specific failing node, then loop back to the consistency check" width="760">
 
 1. **Consistency check**: the same question is tested multiple times to check whether the bot answers consistently. Any inconsistency on the same question signals ambiguity in a topic's or instruction's decision logic, and gets fixed immediately — rather than waiting for it to surface in a real support interaction.
 2. **Batch-generate test questions**: before launch, Copilot Studio's built-in Agent Evaluation test-set feature (which auto-generates questions from existing Topics) is used to build a question bank covering features, troubleshooting, firmware, comparison questions, and trap questions (deliberately asking about a model that doesn't exist), and the bot is run through the full set at once.
