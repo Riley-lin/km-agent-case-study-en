@@ -1,0 +1,47 @@
+# Language Detection Topic (Microsoft Copilot Studio Adaptive Dialog export format)
+#
+# This example reflects a Traditional Chinese-language customer service deployment.
+# It is the one piece of genuine, as-exported logic included in this repository —
+# it detects whether the user's current message contains Chinese characters and
+# writes the result to a shared language variable, which every subsequent message
+# (including button labels and disclaimers) reads from, so the reply language never
+# switches partway through a conversation.
+# This snippet contains no business logic or company information; it is generic
+# platform syntax, included here as a reference example.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =!IsBlank(System.Activity.Text)
+  type: Message
+  actions:
+    - kind: ConditionGroup
+      id: detectChinese
+      conditions:
+        - id: containsCjk
+          condition: =IsMatch(System.Activity.Text, "[一-鿿]", MatchOptions.Contains)
+          actions:
+            - kind: SetVariable
+              id: setChineseLocale
+              variable: System.User.Language
+              value:
+                kind: OptionDataValue
+                type:
+                  kind: SystemOptionSet
+                  name: Locale
+                value: Chinese_Traditional
+
+      elseActions:
+        - kind: SetVariable
+          id: setEnglishLocale
+          variable: System.User.Language
+          value:
+            kind: OptionDataValue
+            type:
+              kind: SystemOptionSet
+              name: Locale
+            value: English
+
+inputType: {}
+outputType: {}
